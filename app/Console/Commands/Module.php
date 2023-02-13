@@ -80,6 +80,7 @@ class Module extends Command
             }
 
 
+
             // src
             $srcFolder = $moduleName . '/src';
             if (!File::exists($srcFolder)) {
