@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\User\src\Http\Controllers\UserController;
+use Modules\Dashboard\src\Http\Controllers\HomeAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +15,5 @@ use Modules\User\src\Http\Controllers\UserController;
 */
 
 Route::prefix('admin')->group(function(){
-    Route::prefix('user')->group(function(){
-        Route::get('/',[UserController::class,'index'])->name('admin.user.index');
-        Route::get('/create',[UserController::class,'create'])->name('admin.user.create');
-
-    });
+        Route::get('/dashboard',[HomeAdminController::class,'index'])->name('admin.home.index');
 });
