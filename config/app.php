@@ -198,7 +198,8 @@ return [
         /*
             * Custom Service Providers...
         */
-        ModuleServiceProvider::class
+        ModuleServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
     ],
 
     /*

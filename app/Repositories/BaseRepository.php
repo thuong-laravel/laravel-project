@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Repositories\RepositoryInterface;
+use DataTables;
+use Illuminate\Support\Facades\Log;
 
 abstract class BaseRepository implements RepositoryInterface
 {
@@ -30,6 +32,17 @@ abstract class BaseRepository implements RepositoryInterface
     public function getAll()
     {
         return $this->model->all();
+    }
+
+    /**
+     * getByAttribute
+     *
+     * @param  mixed $attr
+     * @return void
+     */
+    public function getByAttribure($attr = [])
+    {
+        return $this->model->select($attr)->get();
     }
 
     /**
@@ -69,10 +82,27 @@ abstract class BaseRepository implements RepositoryInterface
     public function delete($id)
     {
         $result = $this->model->find($id);
-        if($result){
+        if ($result) {
             $result->delete();
             return $result;
         }
         return false;
+    }
+
+    public function showDataTable($routeDelete)
+    {
+        $data = $this->getAll();
+        Log::debug($routeDelete);
+        dd($routeDelete);
+        // return DataTables::of($data)->addIndexColumn()
+        //     ->addColumn('action', function ($row) {
+        //         $btn = '<a href="" class="btn btn-warning btn-sm">Sửa</a>
+        //             <a href="'.route('admin.user.delete',["id"=>$row->id]).'" class="btn btn-danger btn-sm">Xóa</a>';
+        //         return $btn;
+        //     })
+        //     ->editColumn('created_at', function ($user) {
+        //         return $user->created_at;
+        //     })->rawColumns(['action'])
+        //     ->make(true);
     }
 }

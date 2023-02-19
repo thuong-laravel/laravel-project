@@ -2,8 +2,9 @@
 namespace Modules\User\src\Repositories;
 
 
-use App\Models\User;
 use App\Repositories\BaseRepository;
+use Illuminate\Support\Facades\Hash;
+use Modules\User\src\Models\User;
 
 class UserRepository extends BaseRepository implements UserRepositoryInterface{
 

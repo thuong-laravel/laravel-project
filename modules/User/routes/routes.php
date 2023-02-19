@@ -14,10 +14,11 @@ use Modules\User\src\Http\Controllers\UserController;
 |
 */
 
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->middleware("web")->group(function(){
     Route::prefix('user')->group(function(){
         Route::get('/',[UserController::class,'index'])->name('admin.user.index');
         Route::get('/create',[UserController::class,'create'])->name('admin.user.create');
-
+        Route::post('/store',[UserController::class,'store'])->name('admin.user.store');
+        Route::get('/delete/{id}',[UserController::class,'delete'])->name('admin.user.delete');
     });
 });

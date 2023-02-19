@@ -33,4 +33,22 @@ interface RepositoryInterface {
      * @return void
      */
     public function delete($id);
+
+    /**
+     * getByAttribure
+     *
+     * @param  mixed $attr
+     * @return void
+     */
+    public function getByAttribure($attr = []);
+
+    /**
+     * showDataTable
+     *
+     * @param  mixed $created
+     * @return void
+     */
+    public function showDataTable($routeDelete);
+
+
 }
